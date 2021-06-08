@@ -1,0 +1,7 @@
+this is the content of the file
+with open you can read it and
+then with a loop you can print it
+on the screen. Using enconding='utf-8'
+you avoid some strange convertions of
+caracters. With strip(), you avoid printing
+an empty line between each (not empty) line
