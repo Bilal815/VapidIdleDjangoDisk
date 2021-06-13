@@ -55,8 +55,8 @@ def analyze(request):
     for char in djtext:
       if char !="\n" and char !="\r":
         analyzed = analyzed + char
-      else:
-        print("no")
+      #else:
+        #print("no")
     print("pre", analyzed)
     params = { "purpose": "Remove New Lines", "analyzed_text": analyzed}
     djtext = analyzed

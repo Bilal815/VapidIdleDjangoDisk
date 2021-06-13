@@ -15,7 +15,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="">
 </head>
 
 <body>
@@ -48,41 +47,41 @@
         </form>
     </nav>
 
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <div class="alert alert-success alert-dismissible okay" role="alert">
         <strong>Welcome to the Text Utils!</strong> Want to know how your text looks like to the readers? Enter it so we can analyze it for you.
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <button type="button" class="btn-close show" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 
-    <div class="container">
-        <form action="analyze/" method="post" class="mb-3">
+    <div class="container ">
+        <form action="analyze/ " method="post" class="mb-3 ">
             <!-- Token to add security to our typed text-->
             {% csrf_token %}
-            <label for="exampleFormControlTextarea1" class="form-label">Enter uour text and let Text Utils do the magic</label>
-            <textarea class="form-control" name="text" id="exampleFormControlTextarea1" rows="12"></textarea>
+            <p id="wetype" for="exampleFormControlTextarea1" class="form-label "></p>
+            <textarea class="form-control " name="text" id="exampleFormControlTextarea1 " rows="12 "></textarea>
             <br>
-            <div class="form-check form-switch">
-                <input class="form-check-input" name="removepunc" type="checkbox" id="flexSwitchCheckDefault">
-                <label class="form-check-label" for="flexSwitchCheckDefault">Remove Punctuations</label>
+            <div class="form-check form-switch ">
+                <input class="form-check-input " name="removepunc " type="checkbox " id="flexSwitchCheckDefault ">
+                <label class="form-check-label " for="flexSwitchCheckDefault ">Remove Punctuations</label>
             </div>
 
-            <div class="form-check form-switch">
-                <input class="form-check-input" name="fullcaps" type="checkbox" id="flexSwitchCheck1">
-                <label class="form-check-label" for="flexSwitchCheckDefault">UPPERCASE</label>
+            <div class="form-check form-switch ">
+                <input class="form-check-input " name="fullcaps " type="checkbox " id="flexSwitchCheck1 ">
+                <label class="form-check-label " for="flexSwitchCheckDefault ">UPPERCASE</label>
             </div>
 
-            <div class="form-check form-switch">
-                <input class="form-check-input" name="charcount" type="checkbox" id="flexSwitchCheck2">
-                <label class="form-check-label" for="flexSwitchCheckDefault">Character Count</label>
+            <div class="form-check form-switch ">
+                <input class="form-check-input " name="charcount " type="checkbox " id="flexSwitchCheck2 ">
+                <label class="form-check-label " for="flexSwitchCheckDefault ">Character Count</label>
             </div>
 
-            <div class="form-check form-switch">
-                <input class="form-check-input" name="newlineremover" type="checkbox" id="flexSwitchCheck3">
-                <label class="form-check-label" for="flexSwitchCheckDefault">New Line Remover</label>
+            <div class="form-check form-switch ">
+                <input class="form-check-input " name="newlineremover " type="checkbox " id="flexSwitchCheck3 ">
+                <label class="form-check-label " for="flexSwitchCheckDefault ">New Line Remover</label>
             </div>
 
-            <div class="form-check form-switch">
-                <input class="form-check-input" name="extraspaceremove" type="checkbox" id="flexSwitchCheck4">
-                <label class="form-check-label" for="flexSwitchCheckDefault">Remove Extra Spaces</label>
+            <div class="form-check form-switch ">
+                <input class="form-check-input " name="extraspaceremove " type="checkbox " id="flexSwitchCheck4 ">
+                <label class="form-check-label " for="flexSwitchCheckDefault ">Remove Extra Spaces</label>
             </div>
 
             <br>
@@ -94,7 +93,36 @@
 
 <!--<p>{{ name }} lives in {{ place }}</p>-->
 
-<script src="" async defer></script>
 </body>
+
+<style>
+    .fade {
+        display: none;
+    }
+    
+    p {
+        margin-top: 15px;
+    }
+</style>
+
+<script>
+    $('.show').click(function() {
+        $('.okay').toggleClass('fade');
+    });
+
+    var i = 0;
+    var txt = 'Enter your text and let Text Utils do the magic for you!';
+    var speed = 50;
+
+    document.addEventListener("DOMContentLoaded", typeWriter());
+
+    function typeWriter() {
+        if (i < txt.length) {
+            document.getElementById("wetype").innerHTML += txt.charAt(i);
+            i++;
+            setTimeout(typeWriter, speed);
+        }
+    }
+</script>
 
 </html>
